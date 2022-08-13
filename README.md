@@ -48,7 +48,7 @@ similarity: 70
 
 ## 食用方法
 
-使用 `#acg_search` 跟随 **图片** 或 **@用户(将会把目标头像当作待搜索图片)** 发送，默认允许附带多张图片，最多三张
+使用 `#acg_search` 跟随 **图片** 或 **@用户(将会把目标头像当作待搜索图片)** 发送，默认允许附带多张图片，最多两张(由于tracemoe在某些情况下搜索极慢，所以只设置了两张)
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/82202033/184493636-abc2bcbb-6ed5-496b-962b-690ace76818e.jpg" width="250" alt="多图搜索" />
