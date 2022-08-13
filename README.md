@@ -15,7 +15,6 @@ git clone https://github.com/KallkaGo/acg_search.git
 
 或通过本项目仓库左上角 `code -> Download.zip` 下载压缩包，解压至 `Adachi-BOT/src/plugins` 目录内
 
-> 注意：若使用下载压缩包方式，请务必删除解压后目录名字中的 `-master`，否则插件无法启动
 
 ## 更新方法
 
