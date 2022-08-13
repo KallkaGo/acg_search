@@ -52,7 +52,7 @@ similarity: 70
 使用 `#acg_search` 跟随 **图片** 或 **@用户(将会把目标头像当作待搜索图片)** 发送，默认允许附带多张图片，最多三张
 
 <div align="center">
-    ![IMG_20220813_184653](https://user-images.githubusercontent.com/82202033/184493636-abc2bcbb-6ed5-496b-962b-690ace76818e.jpg)
+  <img src="https://user-images.githubusercontent.com/82202033/184493636-abc2bcbb-6ed5-496b-962b-690ace76818e.jpg" width="250" alt="多图搜索" />
     <br />
     <font color="#666">[搜索示例]</font>
 </div>
