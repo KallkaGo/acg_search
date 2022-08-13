@@ -39,7 +39,7 @@ similarity: 70
 
 - tip: 没卵用的东西，删不删看你
 - at: 是否开启 @用户 查询目标头像功能
-- multiple: true（多图搜索，上限三张）false（单图搜索）
+- multiple: true（多图搜索，上限两张）false（单图搜索）
 - similarity: 相似度，低于该值的结果将不会显示（注意：由于traceMoe搜索引擎的关系,请不要将该值设置过低，否则结果将会非常不准确(就算设置90以上也会出现牛头不对马嘴的情况)）
 
 修改 `acg_search.yml` 后重启 bot 或执行 Adachi-BOT 的 `refresh` 重载配置文件指令生效
