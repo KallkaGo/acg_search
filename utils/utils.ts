@@ -4,12 +4,12 @@ export interface IParams {
 
 export function formatGetURL( url: string, params: IParams | undefined ): string {
 	if ( !params ) return url;
-	let paramsStr = "https://images.weserv.nl/";
+	let paramsStr = "";
 	for ( const key in params ) {
-		paramsStr += `?${ key }=${ encodeURIComponent( params[key] ) }`;
+		paramsStr += `&${ key }=${ encodeURIComponent( params[key] ) }`;
 	}
 	
-	return `${ url }?anilistInfo&url=${ paramsStr.substring( 0 ) }`
+	return `${ url }?anilistInfo${ paramsStr.substring( 0 ) }`
 }
 
 export function formatRowMessage( message: string[] ) {

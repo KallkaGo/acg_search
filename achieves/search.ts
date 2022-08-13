@@ -59,7 +59,7 @@ export async function main( { sendMessage, messageData, logger }: InputParameter
 		config.multiple && rowMessageArr.push( `---第${ imgIndex }张搜索结果---` );
 		let url: string;
 		if ( rec.type === "image" ) {
-			url = rec.data.url;
+			url = `https://images.weserv.nl/?url=${rec.data.url}`;
 		} else {
 			url = `https://q1.qlogo.cn/g?b=qq&s=640&nk=${ rec.data.qq }`;
 		}
@@ -86,10 +86,10 @@ export async function main( { sendMessage, messageData, logger }: InputParameter
 		
 		/* 生成返回数据对象方法 */
 		const setMessageData = ( data: ITraceResult["result"], key: string, diyKey: string ) => {
-		
+			
 			if ( data[key] && !sendMessageObj[diyKey] ) {
-				if(typeof data[key] === 'object'){
-					data[key] = data[key].title.native
+				if( data[key] instanceof Object){
+					data[key] = `${data[key].title.native} | ${data[key].title.english}`
 				}
 				sendMessageObj[diyKey] = data[key];
 			}
