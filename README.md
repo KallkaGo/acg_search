@@ -28,7 +28,7 @@ git pull
 
 ## 食用方法
 
-初次运行会在 `Adachi-BOT/config` 目录下创建 `pic_search.yml` 配置文件，初始值如下
+初次运行会在 `Adachi-BOT/config` 目录下创建 `acg_search.yml` 配置文件，初始值如下
 
 ```yaml
 tip: 以图识番插件配置文件
