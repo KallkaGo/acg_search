@@ -52,12 +52,17 @@ function loadConfig( file: FileManagement ): SearchConfig {
 export async function init( { file }: BOT ): Promise<PluginSetting> {
 	
 	config = loadConfig( file );
-	// keys = new SearchKey( config );
+	
 	
 	bot.refresh.registerRefreshableFile( SearchConfig.configName, config );
 	
 	return {
 		pluginName: "acg_search",
-		cfgList: [ search ]
+		cfgList: [ search ],
+		repo: {
+			owner: "KallkaGo",
+			repoName: "acg_search",
+			ref: "main"
+		}
 	};
 }
