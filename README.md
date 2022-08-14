@@ -39,7 +39,7 @@ similarity: 70
 
 - tip: 没卵用的东西，删不删看你
 - at: 是否开启 @用户 查询目标头像功能
-- multiple: true（多图搜索，上限三张）false（单图搜索）
+- multiple: true（多图搜索，上限两张）false（单图搜索）
 - similarity: 相似度，低于该值的结果将不会显示（注意：由于traceMoe搜索引擎的关系,请不要将该值设置过低，否则结果将会非常不准确(就算设置90以上也会出现牛头不对马嘴的情况)）
 
 修改 `acg_search.yml` 后重启 bot 或执行 Adachi-BOT 的 `refresh` 重载配置文件指令生效
@@ -48,7 +48,7 @@ similarity: 70
 
 ## 食用方法
 
-使用 `#acg_search` 跟随 **图片** 或 **@用户(将会把目标头像当作待搜索图片)** 发送，默认允许附带多张图片，最多三张
+使用 `#acg_search` 跟随 **图片** 或 **@用户(将会把目标头像当作待搜索图片)基本是牛头不对马嘴的结果，可以忽略** 发送，默认允许附带多张图片，最多两张(由于tracemoe在某些情况下搜索极慢，所以只设置了两张)
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/82202033/184493636-abc2bcbb-6ed5-496b-962b-690ace76818e.jpg" width="250" alt="多图搜索" />
@@ -57,7 +57,7 @@ similarity: 70
 </div>
 
 
-基本是牛头不对马嘴的结果，可以忽略
+
 
 > 注：前置符号 # 与指令关键字 acg_search 均可修改，详见 [Adachi-BOT 说明文档][3]  
 > 查询到的图片相似度小于 similarity设定值 将会直接提示 “未找到类似图片”
