@@ -13,7 +13,7 @@ const search: OrderConfig = {
 	cmdKey: "Kallka-go.acg-search",
 	desc: [ "以图识番", "[图片]" ],
 	headers: [ "acg_search" ],
-	regexps: [ "[\\w\\W]+" ],
+	regexps: [ "[\\w\\W]*" ],
 	main: "achieves/search",
 	detail: "附带图片发送，使用trace.moe搜索\n"
 		
