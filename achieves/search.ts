@@ -35,7 +35,7 @@ export async function main({ sendMessage, messageData, logger, client }: InputPa
 	let ReplyImage: ImageElem[] = []
 	let isError: boolean = false
 
-
+	/* 回复查询功能 */
 	if (source) {
 		try {
 			let replyData: GroupMessage[] | PrivateMessage[] = []
