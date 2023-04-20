@@ -60,6 +60,7 @@ similarity: 70
     <br />
     <font color="#666">[回复搜索示例]</font>
 </div>
+
 > 注：前置符号 # 与指令关键字 acg_search 均可修改，详见 [Adachi-BOT 说明文档][3]  
 > 查询到的图片相似度小于 similarity设定值 将会直接提示 “未找到类似图片”
 
