@@ -4,7 +4,7 @@ import { formatRowMessage } from "#acg_search/utils/utils";
 import { traceMoeSerach } from "#acg_search/utils/api";
 import { config } from "#acg_search/init";
 import { ImageElem, GroupMessage, PrivateMessage, User, Group, AtElem } from 'icqq';
-import { ITracemoeResponseError, ITracemoeResponseSuccess, ITraceResult, IResult } from "#acg_search/types/Tracemoe";
+import { ITracemoeResponseError, ITracemoeResponseSuccess, IResult } from "#acg_search/types/Tracemoe";
 import { isPrivateMessage } from "@modules/message";
 
 
@@ -64,8 +64,8 @@ export async function main({ sendMessage, messageData, logger, client }: InputPa
 		}
 	}
 
-	const recImage: any[] = message.filter(m => m.type === "image");
-	const recAt: any[] = message.filter(m => m.type === "at");
+	const recImage = <Array<ImageElem>>message.filter(m => m.type === "image");
+	const recAt = <Array<AtElem>>message.filter(m => m.type === "at");
 
 	const recMessage: Array<ImageElem | AtElem> = [...ReplyImage, ...recImage];
 
@@ -116,6 +116,7 @@ export async function main({ sendMessage, messageData, logger, client }: InputPa
 		let result: ITracemoeResponseSuccess | ITracemoeResponseError;
 		try {
 			result = await traceMoeSerach({ url });
+
 		} catch (error) {
 			logger.error(error);
 			rowMessageArr.push(ErrorMsg.ERROR_MESSAGE);
@@ -123,7 +124,7 @@ export async function main({ sendMessage, messageData, logger, client }: InputPa
 		}
 
 		/* 获取前两个相似度匹配的数据 */
-		const gottenResult = (<any>result).result.filter((r: IResult) => Number(r.similarity) * 100 >= config.similarity).slice(0, 2);
+		const gottenResult = (<ITracemoeResponseSuccess>result).result.filter((r: IResult) => Number(r.similarity) * 100 >= config.similarity).slice(0, 2);
 
 		if (!gottenResult.length) {
 			rowMessageArr.push(ErrorMsg.NOT_FOUNT);
@@ -133,7 +134,7 @@ export async function main({ sendMessage, messageData, logger, client }: InputPa
 		const sendMessageObj: { [field: string]: string } = {};
 
 		/* 生成返回数据对象方法 */
-		const setMessageData = (data: ITraceResult["result"], key: string, diyKey: string) => {
+		const setMessageData = (data: IResult, key: string, diyKey: string) => {
 
 			if (data[key] && !sendMessageObj[diyKey]) {
 				if (data[key] instanceof Object) {
