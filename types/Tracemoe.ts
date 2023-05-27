@@ -9,16 +9,10 @@ export interface IResult {
 }
 
 
-export interface ITraceResult {
+export interface ITracemoeResponseSuccess {
 	frameCount: number
 	error: string
-	result: IResult
-}
-
-
-
-export interface ITracemoeResponseSuccess {
-	result: ITraceResult[]
+	result: IResult[]
 }
 
 export interface ITracemoeResponseError {

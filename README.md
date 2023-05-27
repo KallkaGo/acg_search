@@ -3,7 +3,12 @@
 本项目为 [Adachi-BOT][1] 的衍生插件，基于 [TraceMoe][2] 接口实现的qq机器人以图识番功能。
 
 ## 更新日志
+
+- **2023/4/22 => 优化相似度显示**
+
 - **2023/4/19**  => **适配主项目icqq, 增加回复查询功能**
+
+  
 
 ## 安装插件
 
@@ -55,9 +60,11 @@ similarity: 70
     <br />
     <font color="#666">[搜索示例]</font>
 </div>
-
-
-
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/82202033/233124353-a1a3f871-e3c6-4281-a432-bf1a4a18a5d4.png" width="250" alt="回复搜索" />
+    <br />
+    <font color="#666">[回复搜索示例]</font>
+</div>
 
 > 注：前置符号 # 与指令关键字 acg_search 均可修改，详见 [Adachi-BOT 说明文档][3]  
 > 查询到的图片相似度小于 similarity设定值 将会直接提示 “未找到类似图片”
