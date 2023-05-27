@@ -16,6 +16,7 @@ export function traceMoeSerach( params: IParams | undefined ): Promise<ITracemoe
 			
 			if ( result.ok ) {
 				const res = await result.json();
+				console.log(res);
 				resolve( res );
 			}
 			reject( new Error( "ERROR" ) );
