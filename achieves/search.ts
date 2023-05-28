@@ -1,6 +1,6 @@
 import bot from "ROOT";
 import { InputParameter } from "@modules/command";
-import { formatRowMessage } from "#acg_search/utils/utils";
+import {  handleSendMessage } from "#acg_search/utils/utils";
 import { traceMoeSerach } from "#acg_search/utils/api";
 import { config } from "#acg_search/init";
 import { ImageElem, GroupMessage, PrivateMessage, User, Group, AtElem } from 'icqq';
@@ -142,7 +142,7 @@ export async function main({ sendMessage, messageData, logger, client }: InputPa
 					data[key] = `${data[key].title.native} | ${data[key].title.english}`
 				}
 				if (key === 'image') {
-					 sendMessageObj[diyKey] = {
+					sendMessageObj[diyKey] = {
 						type: "image",
 						file: data[key],
 						origin: false
@@ -164,14 +164,16 @@ export async function main({ sendMessage, messageData, logger, client }: InputPa
 
 		/* 根据数据对象生成返回数据 */
 		for (const sKey in sendMessageObj) {
+			if (sKey === '图片' && !config.showImage) continue
 			if (sKey !== '图片') {
 				rowMessageArr.push(`${sKey}：${sendMessageObj[sKey]}`);
-			} else {
+			}
+			else {
 				rowMessageArr.push(sendMessageObj[sKey])
 			}
 
 		}
 	}
 	const sliceIndex = rowMessageArr.length - 1
-	await sendMessage([formatRowMessage(rowMessageArr.slice(0,sliceIndex)),rowMessageArr[rowMessageArr.length - 1]]);
+	await sendMessage(handleSendMessage(config.showImage, rowMessageArr, sliceIndex));
 }
