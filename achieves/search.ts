@@ -1,6 +1,6 @@
 import bot from "ROOT";
 import { InputParameter } from "@modules/command";
-import {  handleSendMessage } from "#acg_search/utils/utils";
+import { handleSendMessage } from "#acg_search/utils/utils";
 import { traceMoeSerach } from "#acg_search/utils/api";
 import { config } from "#acg_search/init";
 import { ImageElem, GroupMessage, PrivateMessage, User, Group, AtElem } from 'icqq';
@@ -136,24 +136,29 @@ export async function main({ sendMessage, messageData, logger, client }: InputPa
 
 		/* 生成返回数据对象方法 */
 		const setMessageData = (data: IResult, key: string, diyKey: string) => {
-
-			if (data[key] && !sendMessageObj[diyKey]) {
-				if (data[key] instanceof Object) {
-					data[key] = `${data[key].title.native} | ${data[key].title.english}`
-				}
-				if (key === 'image') {
-					sendMessageObj[diyKey] = {
-						type: "image",
-						file: data[key],
-						origin: false
-					}
-					return
-				}
-				if (key === 'similarity') data[key] = Number(data[key]!.toFixed(2))
-				sendMessageObj[diyKey] = data[key];
+			if (!data[key] || sendMessageObj[diyKey]) {
+				return;
 			}
-		}
 
+			if (data[key] instanceof Object) {
+				data[key] = `${data[key].title.native} | ${data[key].title.english}`;
+			}
+
+			if (key === 'image') {
+				sendMessageObj[diyKey] = {
+					type: "image",
+					file: data[key],
+					origin: false
+				};
+				return;
+			}
+
+			if (key === 'similarity') {
+				data[key] = Number(data[key]!.toFixed(2));
+			}
+
+			sendMessageObj[diyKey] = data[key];
+		};
 		/* 生成返回数据对象 */
 		for (const data of gottenResult) {
 
