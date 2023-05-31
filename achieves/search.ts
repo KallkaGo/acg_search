@@ -153,6 +153,10 @@ export async function main({ sendMessage, messageData, logger, client }: InputPa
 				return;
 			}
 
+			if(key === 'episode'){
+				data[key] = `第${data[key]}集`
+			}
+
 			if (key === 'similarity') {
 				data[key] = Number(data[key]!.toFixed(2));
 			}
@@ -168,15 +172,13 @@ export async function main({ sendMessage, messageData, logger, client }: InputPa
 		}
 
 		/* 根据数据对象生成返回数据 */
-		for (const sKey in sendMessageObj) {
-			if (sKey === '图片' && !config.showImage) continue
+		for (const [sKey, sValue] of Object.entries(sendMessageObj)) {
+			if (sKey === '图片' && !config.showImage) continue;
 			if (sKey !== '图片') {
-				rowMessageArr.push(`${sKey}：${sendMessageObj[sKey]}`);
+				rowMessageArr.push(`${sKey}：${sValue}`);
+			} else {
+				rowMessageArr.push(sValue);
 			}
-			else {
-				rowMessageArr.push(sendMessageObj[sKey])
-			}
-
 		}
 	}
 	const sliceIndex = rowMessageArr.length - 1
